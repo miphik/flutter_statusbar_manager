@@ -155,7 +155,11 @@ public class FlutterStatusbarManagerPlugin implements FlutterPlugin, ActivityAwa
                 colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        activity.getWindow().setStatusBarColor((Integer) valueAnimator.getAnimatedValue());
+                        try {
+                            activity.getWindow().setStatusBarColor((Integer) valueAnimator.getAnimatedValue());
+                        } catch (Exception e) {
+                            /*NOP*/
+                        }
                     }
                 });
                 colorAnimation.setDuration(300).setStartDelay(0);
@@ -290,7 +294,11 @@ public class FlutterStatusbarManagerPlugin implements FlutterPlugin, ActivityAwa
                 colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        activity.getWindow().setNavigationBarColor((Integer) valueAnimator.getAnimatedValue());
+                        try {
+                            activity.getWindow().setNavigationBarColor((Integer) valueAnimator.getAnimatedValue());
+                        } catch (Exception e) {
+                            /*NOP*/
+                        }
                     }
                 });
                 colorAnimation.setDuration(300).setStartDelay(0);
